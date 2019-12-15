@@ -89,14 +89,6 @@ def matrix2text(matrix):
     return text
 
 
-#  def RemovePadding(s):
-#      return s.replace('`','')
-
-
-#  def Padding(s):
-#      return s + ((16 - len(s) % 16) * '`')
-
-
 class AES:
     def __init__(self, master_key):
         self.change_key(master_key)
@@ -126,7 +118,6 @@ class AES:
         # print self.round_keys
 
     def encrypt(self, plaintext):
-        #  plaintext = Padding(plaintext)
         self.plain_state = text2matrix(plaintext)
 
         self.__add_round_key(self.plain_state, self.round_keys[:4])
@@ -141,7 +132,6 @@ class AES:
         return matrix2text(self.plain_state)
 
     def decrypt(self, ciphertext):
-        #  ciphertext = RemovePadding(ciphertext)
         self.cipher_state = text2matrix(ciphertext)
 
         self.__add_round_key(self.cipher_state, self.round_keys[40:])
