@@ -1,4 +1,4 @@
-#! /usr/bin/env python 
+#!/usr/bin/env python 
 import socket 
 import select 
 import sys 
@@ -51,7 +51,6 @@ while True:
             message = message.strip('\n')
             messageSendEnc = '' 
             for i in range(int(math.ceil(len(message) / 16.))):
-                print str(i) + message
                 if len(message) < 16:
                     s = message + '*' * (16 - len(message))
                 else:
