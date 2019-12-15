@@ -1,4 +1,4 @@
-# Python program to implement client side of chat room. 
+#! /usr/bin/env python 
 import socket 
 import select 
 import sys 
@@ -14,7 +14,6 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.connect((IP_address, Port)) 
 print("\033[92mConnection to server established!\033[0;0m")
 
-#  aes_key = 'This is AES key!'
 aes_key = 0x2b7e151628aed2a6abf7158809cf4f3c
 aes = AES(aes_key)
 

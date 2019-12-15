@@ -1,4 +1,4 @@
-# Python program to implement server side of chat room. 
+#! /usr/bin/env python
 import socket 
 import select 
 import sys 
@@ -33,7 +33,6 @@ def numToString(num):
 
 def recvClientThread(client, addr): 
     while True: 
-        #  try: 
         messageRecvEnc = client.recv(2048)
         if messageRecvEnc:
             print("\033[92mEncrytped message received:\033[0;0m {}".format(messageRecvEnc))
@@ -43,12 +42,9 @@ def recvClientThread(client, addr):
                 s = int(msg, 16)
                 messageRecvDec += numToString(str(aes.decrypt(s)))
             print "\033[1;33m<Client says> \033[0;0m" +  messageRecvDec.replace('*', '')        
-        #  except: 
-        #      continue
 
 def sendClientThread(client, addr):
     while True:
-        #  try:
         message = sys.stdin.readline()
         message = message.strip('\n')
         messageSendEnc = '' 
@@ -63,9 +59,6 @@ def sendClientThread(client, addr):
 
         print("\033[92mMessage encryted as:\033[0;0m {}".format(messageSendEnc))
         client.send(messageSendEnc)
-        #  except:
-        #      continue
-            
 
 while True: 
     conn, addr = server.accept() 
